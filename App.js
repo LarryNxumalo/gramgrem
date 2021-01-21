@@ -5,6 +5,12 @@ import { View, Text } from 'react-native';
 import * as firebase from 'firebase';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import rootReducer from './redux/reducers'
+import thunk from 'redux-thunk'
+const store = createStore(rootReducer, applyMiddleware(thunk))
+
 const firebaseConfig = {
   apiKey: "AIzaSyAVFbuyz3kdWj8avUd8sDI7lbP1KmBRqjI",
   authDomain: "gram-grem.firebaseapp.com",
@@ -19,13 +25,12 @@ if(firebase.apps.length === 0){
   firebase.initializeApp(firebaseConfig)
 }
 
-
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import LandingScreen from './components/auth/Landing'
 import RegisterScreen from './components/auth/Register'
+import MainScreen from './components/Main'
 
 const Stack = createStackNavigator();
 export class App extends Component {
@@ -70,9 +75,9 @@ export class App extends Component {
     }
 
     return(
-      <View style={{ flex: 1, justifyContent: 'center' }}>
-        <Text>You're Within!</Text>
-      </View>
+      <Provider store={store} >
+        <MainScreen/>
+      </Provider>
   )
   }
 }
