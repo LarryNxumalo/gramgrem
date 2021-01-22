@@ -4,7 +4,8 @@ import { Camera } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
 // import { Button } from 'react-native-paper'
 
-export default function App() {
+
+export default function Add({navigation}) {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [camera, setCamera] = useState(null);
@@ -69,12 +70,12 @@ export default function App() {
                 );
             }}>
         </Button>
-        <Button
-        title="Snap" onPress={() => takePicture()} />
+        <Button title="Snap" onPress={() => takePicture()} />
         {/* {image && <Image source={{ uri: image  }} style={{ flex:1 }} />} */}
         <Button
         title="Pick from Gallery" onPress={() => pickImage()} />
         {image && <Image source={{ uri: image  }} style={{ flex:1 }} />}
+        <Button title="Save" onPress={() => navigation.navigate('Save', {image})} />
     </View>
     );
 }
