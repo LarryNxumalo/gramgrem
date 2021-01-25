@@ -71,11 +71,10 @@ export default function Add({navigation}) {
             }}>
         </Button>
         <Button title="Snap" onPress={() => takePicture()} />
-        {/* {image && <Image source={{ uri: image  }} style={{ flex:1 }} />} */}
-        <Button
-        title="Pick from Gallery" onPress={() => pickImage()} />
+        <Button title="Pick from Gallery" onPress={() => pickImage()} />
+         <Button title="Save" onPress={() => navigation.navigate('Save', {image})} />
         {image && <Image source={{ uri: image  }} style={{ flex:1 }} />}
-        <Button title="Save" onPress={() => navigation.navigate('Save', {image})} />
+       
     </View>
     );
 }

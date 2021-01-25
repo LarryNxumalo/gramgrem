@@ -62,7 +62,7 @@ export class App extends Component {
     if(!loaded){
       return(
           <View style={{ flex: 1, justifyContent: 'center' }}>
-            <Text>Loading...</Text>
+            <Text>LOADING...</Text>
           </View>
       )
     }
@@ -83,7 +83,7 @@ export class App extends Component {
           <Stack.Navigator initialRouteName="Main">
             <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: false}}/>
             <Stack.Screen name="Add" component={AddScreen} navigation={this.props.navigation} />
-            <Stack.Screen name="Save" component={SaveScreen} />
+            <Stack.Screen name="Save" component={SaveScreen} navigation={this.props.navigation}/>
           </Stack.Navigator>
         </NavigationContainer>
 
